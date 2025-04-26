@@ -29,7 +29,7 @@ Está pensado para ser instalado de forma rápida y sencilla usando **ZipInstall
 3. Ejecuta `ZipInstaller.exe`.
 4. Selecciona el **paquete ZIP** de Wingisk Manager.
 5. Espera a que termine la instalación, ya que es automática.
-6. ¡Listo! El acceso root quedará instalado. Prueba con 
+6. ¡Listo! El acceso root quedará instalado. Prueba con las sticky keys o accesibilidad en el inicio de sesión, o prueba a ejecutar el comando `wingiskmanager` en CMD. Te pedirá elevación por contraseña del usuario actual. Pero si no quieres que te la pida, inícialo desde sticky keys o accesibilidad desde el inicio de sesión
 
 ## Modo de uso
 
