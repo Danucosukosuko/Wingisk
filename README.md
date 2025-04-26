@@ -122,7 +122,7 @@ lanzar_programa(r"C:\Windows\System32\cmd.exe /c cmd.exe")
 | Elevación de privilegios    | ✅ Automática |
 | Instalación rápida          | ✅ Mediante ZipInstaller |
 | Seguridad API               | ⚠️ No segura por defecto |
-| Uso recomendado             | 🧪 Entornos de laboratorio |
+| Uso recomendado             | 🧪 Entornos de laboratorio, o en dispositivos aislados. |
 
 ---
 
