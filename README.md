@@ -2,101 +2,130 @@
 
 ![WingiskRooted](https://github.com/user-attachments/assets/c76b25f5-bec9-4236-a24a-24c5b285e6b3)
 
+![Made With Python](https://img.shields.io/badge/Made_with-Love-red)
+
 # Wingisk Manager - Paquete ZIP
 
-🚀 Instala **Wingisk Manager** rápida y fácilmente usando [ZipInstaller](https://github.com/danucosukosuko/ZipInstaller).
-
-## ¿Qué es esto?
-
-Este es el **paquete ZIP** de Wingisk Manager.  
-Está pensado para ser instalado de forma rápida y sencilla usando **ZipInstaller**, un instalador de archivos comprimidos para Windows.
-
-> Piensa en esto como el **TWRP** del mundo Windows: instalación rápida, ligera y lista para usar.
-
-## ¿Qué incluye el paquete?
-
-- `wingiskmanager.exe` → El ejecutable principal.
-- `psexec64.exe` → Necesario para la elevación de privilegios SYSTEM. ⚠️ No provisto en el paquete, pero se descarga automáticamente.
-
-## Requisitos
-
-- Windows 10/11 (Sin permisos, ya que está diseñada para ser instalado desde Hiren's BootCD PE
-- [ZipInstaller](https://github.com/ZipInstaller) descargado y listo para usar.
-
-## Instalación
-1. Usa un entorno como Hiren's BootCD PE
-2. Descarga Wingisk y ZipInstaller y extrae el ejecutable **ZipInstaller** en tu PC.
-3. Ejecuta `ZipInstaller.exe`.
-4. Selecciona el **paquete ZIP** de Wingisk Manager.
-5. Espera a que termine la instalación, ya que es automática.
-6. ¡Listo! El acceso root quedará instalado. Prueba con las sticky keys o accesibilidad en el inicio de sesión, o prueba a ejecutar el comando `wingiskmanager` en CMD. Te pedirá elevación por contraseña del usuario actual. Pero si no quieres que te la pida, inícialo desde sticky keys o accesibilidad desde el inicio de sesión
-
-## Modo de uso
-
-Una vez instalado, simplemente abre **Wingisk Manager** desde el comando `wingiskmanager` en CMD.
+🚀 Instala **Wingisk Manager** rápidamente usando [ZipInstaller](https://github.com/danucosukosuko/ZipInstaller).
 
 ---
 
-# WingiskManager
+## ¿Qué es esto?
+
+Este es el **paquete ZIP** de Wingisk Manager, diseñado para instalarse de forma rápida usando **ZipInstaller**, un instalador de archivos comprimidos para Windows.
+
+> 📦 Piensa en esto como el **TWRP** del mundo Windows: instalación rápida, ligera y lista para usar.
+
+---
+
+## Contenido del paquete
+
+| Archivo              | Descripción                                                        |
+|----------------------|---------------------------------------------------------------------|
+| `wingiskmanager.exe`  | Ejecutable principal de Wingisk Manager.                           |
+| `psexec64.exe`        | Herramienta para elevación a SYSTEM (descarga automática si falta). |
+
+---
+
+## Requisitos
+
+| Requisito        | Detalles                                  |
+|------------------|-------------------------------------------|
+| Sistema operativo | Windows 10/11                            |
+| Permisos          | No necesarios (ideal en entornos PE)     |
+| Herramientas      | [ZipInstaller](https://github.com/danucosukosuko/ZipInstaller) descargado |
+
+---
+
+## Instalación
+
+| Paso | Instrucciones                                                              |
+|-----:|---------------------------------------------------------------------------|
+|  1.  | Arranca el equipo usando **Hiren's BootCD PE**.                           |
+|  2.  | Descarga **Wingisk Manager** y **ZipInstaller**.                          |
+|  3.  | Extrae y ejecuta `ZipInstaller.exe`.                                       |
+|  4.  | Selecciona el paquete ZIP de Wingisk Manager.                             |
+|  5.  | Deja que la instalación automática finalice.                              |
+|  6.  | ¡Listo! Usa Sticky Keys o CMD (`wingiskmanager`) para abrirlo.             |
+
+> Para omitir la contraseña de usuario, inicia Wingisk desde las herramientas de accesibilidad en la pantalla de login.
+
+---
+
+# Wingisk Manager
 
 ## Funcionalidades
 
-- Elevación automática a SYSTEM usando PsExec. ⚠️ No provisto en el paquete, pero se descarga automáticamente.
-- Creación de un usuario oculto con privilegios altos (`wingisk`).
-- Activación de la cuenta "Administrador" oculta de Windows.
-- Desactivación rápida de Windows Defender.
-- Shells interactivas como SYSTEM (CMD y PowerShell).
-- Toma de propiedad y eliminación de archivos/carpeta protegidos.
-- API WebSocket que se inicia por TCP
+| Funcionalidad                      | Descripción                                                               |
+|-------------------------------------|---------------------------------------------------------------------------|
+| 🚀 Elevación SYSTEM                 | Usa PsExec para elevar privilegios a SYSTEM.                              |
+| 👤 Creación de usuario oculto       | Crea el usuario `wingisk` con privilegios de administrador.               |
+| 🛠️ Activación de "Administrador"    | Activa la cuenta de Administrador oculta de Windows.                     |
+| 🔥 Desactivación de Defender        | Desactiva Windows Defender fácilmente.                                   |
+| 🖥️ Shells SYSTEM                    | CMD y PowerShell elevadas a SYSTEM.                                       |
+| 📂 Gestión avanzada de archivos    | Tomar propiedad y eliminar archivos protegidos.                          |
+| 🌐 Servidor API WebSocket           | Permite ejecución remota de comandos vía TCP (localhost:15090).          |
 
-## Uso
+---
 
-### Ejecución normal
+## Uso básico
 
-```cmd
-wingiskmanager.exe
-```
+| Comando                             | Acción                              |
+|-------------------------------------|------------------------------------|
+| `wingiskmanager.exe`                | Ejecución normal, solicita permisos si es necesario. |
+| `wingiskmanager.exe --api`          | Lanza el servidor WebSocket en `127.0.0.1:15090`.    |
 
-Te pedirá elevar permisos automáticamente si no eres SYSTEM.
-
-### Ejecutar API WebSocket (en localhost:15090)
-##### Aunque en la mayoría de los casos no hará falta, ya que el administrador de root te la la opción de instalarlo como servicio)
-
-```cmd
-wingiskmanager.exe --api
-```
-
-- El servidor escucha comandos de ejecución en el puerto **15090**.
-- Por defecto, **solo local** (127.0.0.1).
+---
 
 ## Comunicación con la API WebSocket
 
-Para lanzar un programa a través de la API:
+### Ejemplo en Python
 
 ```python
 import socket
 
 def lanzar_programa(ruta):
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect(("127.0.0.1", 15090))
-    s.sendall(ruta.encode())
-    respuesta = s.recv(4096)
-    print("Respuesta:", respuesta.decode())
-    s.close()
+    try:
+        with socket.create_connection(("127.0.0.1", 15090)) as s:
+            s.sendall(ruta.encode())
+            respuesta = s.recv(4096)
+            print("Respuesta:", respuesta.decode())
+    except Exception as e:
+        print("Error:", e)
 
-lanzar_programa("C:\Windows\System32\cmd.exe /c cmd.exe")
+lanzar_programa(r"C:\Windows\System32\cmd.exe /c cmd.exe")
 ```
 
-### Notas de seguridad
-
-- El acceso de la API es libre para toda la red local. Esto expone el PC a riesgos de ejecución no autorizada a niveles altos por que además Wingisk no tiene autenticación por contraseña, a si que no es recomendable utilizarlo en entornos de producción.
-
-## Importante
-
-⚡ Este programa puede alterar configuraciones críticas del sistema operativo.
-
-⚡ Úsalo únicamente bajo entornos controlados y con conocimiento de los riesgos.
+| Detalle                 | Valor                |
+|--------------------------|----------------------|
+| Puerto                   | 15090                |
+| Dirección                | 127.0.0.1 (localhost) |
+| Autenticación            | ❌ No disponible      |
+| Seguridad recomendada    | Cortafuegos o modificación del código |
 
 ---
 
-Made with ❤️ by Pablo.
+## Notas de seguridad
+
+⚠️ **Advertencia de uso**:
+
+- La API WebSocket **no tiene autenticación** y es accesible en la red local.
+- Se recomienda **no usar en producción** sin modificaciones de seguridad.
+- Wingisk puede alterar configuraciones críticas de Windows.
+
+---
+
+## Resumen
+
+| Característica             | Estado                         |
+|-----------------------------|--------------------------------|
+| Elevación de privilegios    | ✅ Automática |
+| Instalación rápida          | ✅ Mediante ZipInstaller |
+| Seguridad API               | ⚠️ No segura por defecto |
+| Uso recomendado             | 🧪 Entornos de laboratorio |
+
+---
+
+**Made with ❤️ by Pablo.**
+
+---  
