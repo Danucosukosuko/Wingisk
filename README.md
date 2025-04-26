@@ -16,7 +16,7 @@ Está pensado para ser instalado de forma rápida y sencilla usando **ZipInstall
 ## ¿Qué incluye el paquete?
 
 - `wingiskmanager.exe` → El ejecutable principal.
-- `psexec64.exe` → Necesario para la elevación de privilegios SYSTEM. ⚠️ No provisto en el paquete, pero se descarga automáticamente
+- `psexec64.exe` → Necesario para la elevación de privilegios SYSTEM. ⚠️ No provisto en el paquete, pero se descarga automáticamente.
 
 ## Requisitos
 
@@ -33,13 +33,15 @@ Está pensado para ser instalado de forma rápida y sencilla usando **ZipInstall
 
 ## Modo de uso
 
-Una vez instalado, simplemente abre **Wingisk Manager** desde el acceso directo o ejecuta:
+Una vez instalado, simplemente abre **Wingisk Manager** desde el comando `wingiskmanager` en CMD.
 
-# 🚀 Herramienta para la gestión avanzada de Windows como SYSTEM.
+---
+
+# WingiskManager
 
 ## Funcionalidades
 
-- Elevación automática a SYSTEM usando PsExec.
+- Elevación automática a SYSTEM usando PsExec. ⚠️ No provisto en el paquete, pero se descarga automáticamente.
 - Creación de un usuario oculto con privilegios altos (`wingisk`).
 - Activación de la cuenta "Administrador" oculta de Windows.
 - Desactivación rápida de Windows Defender.
