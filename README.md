@@ -23,7 +23,7 @@ Este es el **paquete ZIP** de Wingisk Manager, diseñado para instalarse de form
 | Archivo              | Descripción                                                        |
 |----------------------|---------------------------------------------------------------------|
 | `wingiskmanager.exe`  | Ejecutable principal de Wingisk Manager.                           |
-| `psexec64.exe`        | Herramienta para elevación a SYSTEM (descarga automática si falta). |
+| `psexec64.exe`        | Herramienta para elevación a SYSTEM (descarga automática, ya que PsExec es propiedad de Microsoft). |
 
 ---
 
