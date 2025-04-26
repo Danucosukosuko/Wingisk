@@ -3,6 +3,7 @@
 ![WingiskRooted](https://github.com/user-attachments/assets/c76b25f5-bec9-4236-a24a-24c5b285e6b3)
 
 ![Made With Python](https://img.shields.io/badge/Made_with-Love-red)
+![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/danucosukosuko/Wingisk/latest/total)
 
 # Wingisk Manager - Paquete ZIP
 
