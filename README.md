@@ -4,7 +4,7 @@
 
 # Wingisk Manager - Paquete ZIP
 
-🚀 Instala **Wingisk Manager** rápida y fácilmente usando [ZipInstaller](https://github.com/ZipInstaller).
+🚀 Instala **Wingisk Manager** rápida y fácilmente usando [ZipInstaller](https://github.com/danucosukosuko/ZipInstaller).
 
 ## ¿Qué es esto?
 
