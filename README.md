@@ -20,7 +20,7 @@ Está pensado para ser instalado de forma rápida y sencilla usando **ZipInstall
 
 ## Requisitos
 
-- Windows 10/11 (Sin permisos, ya que está diseñada para ser grabada desde Hiren's BootCD PE
+- Windows 10/11 (Sin permisos, ya que está diseñada para ser instalado desde Hiren's BootCD PE
 - [ZipInstaller](https://github.com/ZipInstaller) descargado y listo para usar.
 
 ## Instalación
