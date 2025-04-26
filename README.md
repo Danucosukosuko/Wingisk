@@ -87,7 +87,7 @@ lanzar_programa("C:\Windows\System32\cmd.exe /c cmd.exe")
 
 ### Notas de seguridad
 
-- El acceso de la API es libre para toda la red local. Esto expone el PC a riesgos de ejecución no autorizada a niveles altos por que además Wingisk no tiene autenticación por contraseña, a si que no es recomendable utilizarlo en entornos de producción
+- El acceso de la API es libre para toda la red local. Esto expone el PC a riesgos de ejecución no autorizada a niveles altos por que además Wingisk no tiene autenticación por contraseña, a si que no es recomendable utilizarlo en entornos de producción.
 
 ## Importante
 
