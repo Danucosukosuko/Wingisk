@@ -82,7 +82,7 @@ Este es el **paquete ZIP** de Wingisk Manager, diseñado para instalarse de form
 
 ## Comunicación con la API WebSocket
 
-### Ejemplo en Python
+### Ejemplo en Python (puedes añadirlo en tu código)
 
 ```python
 import socket
