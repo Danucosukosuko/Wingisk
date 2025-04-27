@@ -129,6 +129,11 @@ lanzar_programa(r"C:\Windows\System32\cmd.exe /c cmd.exe")
 
 ---
 
-**Made with ❤️ by Pablo.**
+# TODO
+Añadir firma digital
+
+---
+
+**Made with ❤️ by Danucosukosuko.**
 
 ---  
