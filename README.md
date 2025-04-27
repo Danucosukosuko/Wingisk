@@ -82,7 +82,7 @@ Este es el **paquete ZIP** de Wingisk Manager, diseñado para instalarse de form
 | Comando                             | Acción                              |
 |-------------------------------------|------------------------------------|
 | `wingiskmanager.exe`                | Ejecución normal, solicita permisos si es necesario. |
-| `wingiskmanager.exe --api`          | Lanza el servidor WebSocket en `0.0.0.0:15090`.    |
+| `wingiskmanager.exe --api`          | Lanza el servidor WebSocket en `localhost:15090`.    |
 
 El argumento `--api` no es necesario en la mayoría de los casos, ya que al instalarlo como servicio, se ejecuta con dicho argumento.
 
@@ -110,7 +110,7 @@ lanzar_programa(r"C:\Windows\System32\cmd.exe /c cmd.exe")
 | Detalle                 | Valor                |
 |--------------------------|----------------------|
 | Puerto                   | 15090                |
-| Dirección                | 0.0.0.0 (Red local) |
+| Dirección                | localhost (Mismo dispositivo |
 | Autenticación            | ❌ No disponible      |
 | Seguridad recomendada    | Cortafuegos o modificación del código |
 
@@ -120,8 +120,8 @@ lanzar_programa(r"C:\Windows\System32\cmd.exe /c cmd.exe")
 
 ⚠️ **Advertencia de uso**:
 
-- La API WebSocket **no tiene autenticación** y es accesible en la red local.
-- Se recomienda **no usar en producción** sin modificaciones de seguridad.
+- La API WebSocket **no tiene autenticación** y es accesible por cualquier programa.
+- Al ser accesible por cualquier programa expone tu dispositivo a riesgos bastante graves.
 - Wingisk puede alterar configuraciones críticas de Windows.
 
 ---
