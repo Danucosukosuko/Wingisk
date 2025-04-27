@@ -45,11 +45,11 @@ Este es el **paquete ZIP** de Wingisk Manager, diseñado para instalarse de form
 | Paso | Instrucciones                                                              |
 |-----:|---------------------------------------------------------------------------|
 |  1.  | Arranca el equipo usando **Hiren's BootCD PE**.                           |
-|  2.  | Descarga **Wingisk Manager** y **ZipInstaller**.                          |
+|  2.  | Descarga **Wingisk** y **ZipInstaller**.                                  |
 |  3.  | Extrae y ejecuta `ZipInstaller.exe`.                                       |
 |  4.  | Selecciona el paquete ZIP de Wingisk Manager.                             |
 |  5.  | Deja que la instalación automática finalice.                              |
-|  6.  | ¡Listo! Usa Sticky Keys o CMD (`wingiskmanager`) para abrirlo.             |
+|  6.  | ¡Listo! Usa Sticky Keys para comprobar la instalación o CMD (`wingiskmanager`) para abrirlo.             |
 
 > Para omitir la contraseña de usuario, inicia Wingisk desde las herramientas de accesibilidad en la pantalla de login.
 
