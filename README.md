@@ -19,7 +19,7 @@ Este es el **paquete ZIP** de Wingisk Manager, diseñado para instalarse de form
 
 > 📦 Piensa en esto como el **TWRP** del mundo Windows: instalación rápida, ligera y lista para usar. (ZipInstaller)
 > 
-> ⚠ Este paquete "rooteará" (te dará privilegios máximos de SYSTEM) a tu dispositivo con Windows, lo que lo puede hacer más inseguro. No lo uses en tu dispositivo 
+> ⚠ Este paquete "rooteará" (te dará privilegios máximos de SYSTEM) a tu dispositivo con Windows, lo que lo puede hacer más inseguro. No lo uses en tu dispositivo principal.
 
 ---
 
