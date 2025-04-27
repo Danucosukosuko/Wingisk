@@ -76,7 +76,9 @@ Este es el **paquete ZIP** de Wingisk Manager, diseñado para instalarse de form
 | Comando                             | Acción                              |
 |-------------------------------------|------------------------------------|
 | `wingiskmanager.exe`                | Ejecución normal, solicita permisos si es necesario. |
-| `wingiskmanager.exe --api`          | Lanza el servidor WebSocket en `127.0.0.1:15090`.    |
+| `wingiskmanager.exe --api`          | Lanza el servidor WebSocket en `0.0.0.0:15090`.    |
+
+El argumento `--api` no es necesario en la mayoría de los casos, ya que al instalarlo como servicio, se ejecuta con dicho argumento.
 
 ---
 
