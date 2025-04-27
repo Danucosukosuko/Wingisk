@@ -9,6 +9,8 @@
 
 🚀 Instala **Wingisk Manager** rápidamente usando [ZipInstaller](https://github.com/danucosukosuko/ZipInstaller).
 
+# ⚠ SÓLO FUNCIONA EN SISTEMAS (x86-64)
+
 ---
 
 ## ¿Qué es esto?
