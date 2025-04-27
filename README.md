@@ -27,6 +27,10 @@ Este es el **paquete ZIP** de Wingisk Manager, diseñado para instalarse de form
 |----------------------|---------------------------------------------------------------------|
 | `wingiskmanager.exe`  | Ejecutable principal de Wingisk Manager.                           |
 | `psexec64.exe`        | Herramienta para elevación a SYSTEM (descarga automática, ya que PsExec es propiedad de Microsoft). |
+| `utilman.exe`         | Modificado para abrir un shell en vez de accesibilidad             |
+| `sethc.exe`           | Modificado para abrir un shell en vez de opciones de sticky keys   |
+| `GetCurl.exe`         | Herramienta para copiarse el ejecutable de cURL al sistema de Hiren's BootCD PE. (Archivo con el mismo nombre, pero con .cmd, código fuente) |
+| `Main.cmd`            | Script con la funcionalidad principal                              |
 
 ---
 
