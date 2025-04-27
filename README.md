@@ -102,7 +102,7 @@ lanzar_programa(r"C:\Windows\System32\cmd.exe /c cmd.exe")
 | Detalle                 | Valor                |
 |--------------------------|----------------------|
 | Puerto                   | 15090                |
-| Dirección                | 127.0.0.1 (localhost) |
+| Dirección                | 0.0.0.0 (Red local) |
 | Autenticación            | ❌ No disponible      |
 | Seguridad recomendada    | Cortafuegos o modificación del código |
 
