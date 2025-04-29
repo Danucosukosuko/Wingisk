@@ -110,7 +110,7 @@ lanzar_programa(r"C:\Windows\System32\cmd.exe /c cmd.exe")
 | Detalle                 | Valor                |
 |--------------------------|----------------------|
 | Puerto                   | 15090                |
-| Dirección                | localhost (Mismo dispositivo |
+| Dirección                | localhost (Mismo dispositivo) |
 | Autenticación            | ❌ No disponible      |
 | Seguridad recomendada    | Cortafuegos o modificación del código |
 
@@ -139,6 +139,8 @@ lanzar_programa(r"C:\Windows\System32\cmd.exe /c cmd.exe")
 
 # TODO
 Añadir firma digital
+
+Añadir ventana de confirmación para iniciar proceso como "root"
 
 ---
 
