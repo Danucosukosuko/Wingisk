@@ -88,7 +88,7 @@ El argumento `--api` no es necesario en la mayoría de los casos, ya que al inst
 
 ---
 
-## Comunicación con la API WebSocket (Para creación de módulos)
+## Comunicación con la API WebSocket (Para creación de módulos o elevación de programas)
 
 ### Ejemplo en Python (puedes añadirlo en tu código)
 
