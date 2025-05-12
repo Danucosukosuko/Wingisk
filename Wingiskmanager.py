@@ -8,6 +8,7 @@ import signal
 import atexit
 import socket
 import threading
+import glob
 
 # -------------------------------------------------------------------
 # Configuración de la API y del servicio
@@ -15,6 +16,7 @@ API_HOST     = "0.0.0.0"
 API_PORT     = 15090
 SERVICE_NAME = "WingiskAPI"
 SERVICE_CMD  = r'C:\Windows\System32\wingiskmanager.exe --api'
+MODULES_DIR  = r"C:\Wingisk\Modules"
 # -------------------------------------------------------------------
 
 def is_system():
@@ -23,12 +25,12 @@ def is_system():
 def elevate_to_system():
     """Relanza este script como SYSTEM usando PsExec."""
     args = ["psexec64", "-i", "-s", sys.executable] + sys.argv
-    print(f"[*] Elevando a SYSTEM: {' '.join(args)}")
+    print(f"🔼 Elevando a SYSTEM: {' '.join(args)}")
     subprocess.run(args, shell=False)
     sys.exit()
 
 def check_registry():
-    """Lee HKCU\SOFTWARE\Wingisk:Open (REG_DWORD)."""
+    """Lee HKCU\\SOFTWARE\\Wingisk:Open (REG_DWORD)."""
     try:
         key = reg.OpenKey(reg.HKEY_CURRENT_USER, r"SOFTWARE\Wingisk", 0, reg.KEY_READ)
         value, _ = reg.QueryValueEx(key, "Open")
@@ -38,24 +40,60 @@ def check_registry():
         return None
 
 def set_registry(value):
-    """Escribe HKCU\SOFTWARE\Wingisk:Open (REG_DWORD)."""
+    """Escribe HKCU\\SOFTWARE\\Wingisk:Open (REG_DWORD)."""
     key = reg.CreateKey(reg.HKEY_CURRENT_USER, r"SOFTWARE\Wingisk")
     reg.SetValueEx(key, "Open", 0, reg.REG_DWORD, int(value))
     reg.CloseKey(key)
 
 def install_service():
     """Crea e inicia el servicio WingiskAPI bajo SYSTEM."""
-    print(f"[*] Instalando servicio {SERVICE_NAME}...")
+    print(f"⚙️ Instalando servicio {SERVICE_NAME}...")
     os.system(f'sc create {SERVICE_NAME} binPath= "{SERVICE_CMD}" start=auto type=own')
     os.system(f'sc description {SERVICE_NAME} "Wingisk API Server running as SYSTEM"')
-    os.system(f'sc start {SERVICE_NAME}')
-    print(f"[+] Servicio {SERVICE_NAME} instalado y arrancado.")
+    os.system(f'sc start {SERVICE_NAME}"')
+    print(f"✅ Servicio {SERVICE_NAME} instalado y arrancado.")
 
 def create_wingisk_user():
-    print("[*] Creando usuario wingisk en Administrators...")
+    print("👤 Creando usuario wingisk en Administrators...")
     os.system("net user wingisk Wingisk@2025 /add")
     os.system("net localgroup Administrators wingisk /add")
-    print("[+] Usuario wingisk creado.")
+    print("✅ Usuario wingisk creado.")
+
+def ensure_modules_dir():
+    """Asegura que exista C:\\Wingisk\\Modules."""
+    if not os.path.isdir(MODULES_DIR):
+        print(f"📁 Creando directorio de módulos: {MODULES_DIR}")
+        os.makedirs(MODULES_DIR, exist_ok=True)
+    else:
+        print(f"📂 Directorio de módulos ya existe: {MODULES_DIR}")
+
+def exec_modules():
+    """Ejecuta todos los scripts y binarios en MODULES_DIR."""
+    patterns = ("*.ps1", "*.exe", "*.bat", "*.cmd")
+    files = []
+    for pat in patterns:
+        files.extend(glob.glob(os.path.join(MODULES_DIR, pat)))
+    if not files:
+        print("🔍 No se encontraron módulos para ejecutar.")
+        return
+
+    print(f"⚡ Ejecutando {len(files)} módulo(s) en {MODULES_DIR}...")
+    for path in files:
+        ext = os.path.splitext(path)[1].lower()
+        try:
+            if ext == ".ps1":
+                print(f"  ▶️ PowerShell (ps1): {path}")
+                subprocess.Popen(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", path])
+            elif ext in (".bat", ".cmd"):
+                print(f"  ▶️ CMD (bat/cmd): {path}")
+                subprocess.Popen(["cmd", "/c", path])
+            elif ext == ".exe":
+                print(f"  ▶️ Ejecutable (exe): {path}")
+                subprocess.Popen([path])
+            else:
+                print(f"  ❓ Ignorando: {path}")
+        except Exception as e:
+            print(f"   ❌ Error al ejecutar {path}: {e}")
 
 # --- Servidor API por sockets ---
 
@@ -71,15 +109,17 @@ def handle_client(conn, addr):
     conn.close()
 
 def api_server():
+    ensure_modules_dir()
+    exec_modules()
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind((API_HOST, API_PORT))
     s.listen(5)
-    print(f"[*] API Server escuchando en {API_HOST}:{API_PORT} como SYSTEM...")
+    print(f"🌐 API Server escuchando en {API_HOST}:{API_PORT} como SYSTEM...")
     while True:
         conn, addr = s.accept()
         threading.Thread(target=handle_client, args=(conn, addr), daemon=True).start()
 
-# --- Menú Root under SYSTEM ---
+# --- Menú Root bajo SYSTEM ---
 
 def root_menu():
     while True:
@@ -98,35 +138,48 @@ def root_menu():
 11. Instalar Servicio API como SYSTEM
 """)
         opt = input(">> ").strip()
-        if opt=="1":    os.system("tasklist")
-        elif opt=="2":  os.system("net user")
-        elif opt=="3":  os.system("cmd")
-        elif opt=="4":  os.system("net user Administrator /active:yes")
-        elif opt=="5":  os.system("powershell Set-MpPreference -DisableRealtimeMonitoring $true")
-        elif opt=="6":
-            p=input("Ruta: ").strip()
+        if opt == "1":
+            os.system("tasklist")
+        elif opt == "2":
+            os.system("net user")
+        elif opt == "3":
+            os.system("cmd")
+        elif opt == "4":
+            os.system("net user Administrator /active:yes")
+        elif opt == "5":
+            os.system("powershell Set-MpPreference -DisableRealtimeMonitoring $true")
+        elif opt == "6":
+            p = input("Ruta: ").strip()
             os.system(f'takeown /f "{p}" /a /r /d y')
             os.system(f'icacls "{p}" /grant Administrators:F /t')
-        elif opt=="7":
-            p=input("Ruta: ").strip()
+        elif opt == "7":
+            p = input("Ruta: ").strip()
             os.system(f'takeown /f "{p}" /a /r /d y')
             os.system(f'icacls "{p}" /grant Administrators:F /t')
-            os.system(f'rmdir /s /q "{p}"' if os.path.isdir(p) else f'del /f /q "{p}"')
-        elif opt=="8":  os.system("powershell")
-        elif opt=="9":  create_wingisk_user()
-        elif opt=="10": break
-        elif opt=="11": install_service()
-        else: print("Opción inválida.")
+            if os.path.isdir(p):
+                os.system(f'rmdir /s /q "{p}"')
+            else:
+                os.system(f'del /f /q "{p}"')
+        elif opt == "8":
+            os.system("powershell")
+        elif opt == "9":
+            create_wingisk_user()
+        elif opt == "10":
+            break
+        elif opt == "11":
+            install_service()
+        else:
+            print("❌ Opción inválida.")
 
 def cleanup():
-    print("[*] Salida: restableciendo registro a 0")
+    print("🧹 Salida: restableciendo registro a 0")
     set_registry(0)
 
 # --- Punto de entrada ---
 
-if __name__=="__main__":
+if __name__ == "__main__":
     atexit.register(cleanup)
-    signal.signal(signal.SIGINT, lambda s,f: (cleanup(), sys.exit(0)))
+    signal.signal(signal.SIGINT, lambda s, f: (cleanup(), sys.exit(0)))
 
     reg_val = check_registry()
 
@@ -136,6 +189,9 @@ if __name__=="__main__":
         elevate_to_system()
 
     # Aquí ya somos SYSTEM
+    # Aseguramos la carpeta de módulos antes de nada
+    ensure_modules_dir()
+
     # Limpiamos flag si venimos de elevación
     if reg_val == 1:
         set_registry(0)
